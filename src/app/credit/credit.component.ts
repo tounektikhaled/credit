@@ -10,6 +10,7 @@ import { ServiceService } from '../service/service.service';
 export class CreditComponent implements OnInit {
   credit!:Credit[];
   @Output() crdt=new Credit(0,'','',0);
+  total!:Number;
   
 
   constructor(private servCredit:ServiceService) { }
@@ -23,7 +24,6 @@ export class CreditComponent implements OnInit {
   listCredit(){
 
     this.credit=this.servCredit.allCredit();
-    
     
   }
   onSelect(){
