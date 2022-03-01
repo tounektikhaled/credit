@@ -1,5 +1,6 @@
 
-import { stringify } from '@angular/compiler/src/util';
+import { HttpClient } from '@angular/common/http'; 
+import { Observable } from 'rxjs';
 import { Injectable, Input } from '@angular/core';
 import { Credit } from '../model/credit';
 
@@ -11,23 +12,14 @@ export class ServiceService {
   date=new Date();
  @Input() crdt!:Credit[];
 
-  constructor() { }
+ constructor(private http: HttpClient) {
+  this.allCredit().subscribe(data => {
+      (data)
+  });
+}
 
-  ajoutCredit(){
-    
-  }
+allCredit(): Observable<any> {
+  return this.http.get("./assets/credit.json")
+}
 
-  allCredit(): Credit[]{
-     return this.credit=[
-       {id:1,date:'12-02-2022',type:'personne',montant:10234},
-       {id:2,date:'10-02-2022',type:'Bank',montant:18764},
-       {id:3,date:'12-12-2022',type:'personne',montant:23},
-       {id:4,date:'05-02-2022',type:'personne',montant:6664},
-       {id:5,date:'12-02-2022',type:'Bank',montant:10234},  
-     ]
-   
-   
-    
-  }
-  
 }

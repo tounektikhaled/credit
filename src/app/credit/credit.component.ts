@@ -12,22 +12,24 @@ export class CreditComponent implements OnInit {
   @Output() crdt=new Credit(0,'','',0);
   total!:Number;
   
+  
 
   constructor(private servCredit:ServiceService) { }
 
   ngOnInit(): void {
     this.listCredit();
-   ;
     
   }
 
   listCredit(){
+this.servCredit.allCredit().subscribe(data => {
+  this.credit=(data);
+}); 
 
-    this.credit=this.servCredit.allCredit();
-    
+
   }
   onSelect(){
-    console.log(this.crdt);
+    
     
   }
 }
