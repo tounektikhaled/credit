@@ -9,6 +9,7 @@ import { ServiceService } from '../service/service.service';
 })
 export class CreditComponent implements OnInit {
   credit!:Credit[];
+  userForm!:any;
   @Output() crdt=new Credit(0,'','',0);
   total!:Number;
   
@@ -30,6 +31,7 @@ this.servCredit.allCredit().subscribe(data => {
   }
   onSelect(){
     
-    
+    console.log(this.userForm);
+    //  this.userForm;
   }
 }
